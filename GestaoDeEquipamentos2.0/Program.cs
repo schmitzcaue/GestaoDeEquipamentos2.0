@@ -1,10 +1,48 @@
-﻿namespace GestaoDeEquipamentos2._0
+﻿using GestaoDeEquipamentos.ConsoleApp.Compartilhado;
+
+
+
+
+namespace GestaoDeEquipamentos.ConsoleApp;
+
+class Program
 {
-    internal class Program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
+        TelaPrincipal telaPrincipal = new TelaPrincipal();
+
+        while (true)
         {
-            Console.WriteLine("Hello, World!");
+            telaPrincipal.ApresentarMenuPrincipal();
+
+            ITela telaEscolhida = telaPrincipal.ObterTela();
+
+            if (telaEscolhida == null)
+                break;
+
+            char opcaoEscolhida = telaEscolhida.ApresentarMenu();
+
+            if (char.ToUpper(opcaoEscolhida) == 'S')
+                break;
+
+            switch (opcaoEscolhida)
+            {
+                case '1':
+                    telaEscolhida.CadastrarRegistro();
+                    break;
+
+                case '2':
+                    telaEscolhida.EditarRegistro();
+                    break;
+
+                case '3':
+                    telaEscolhida.ExcluirRegistro();
+                    break;
+
+                case '4':
+                    telaEscolhida.VisualizarRegistros(true);
+                    break;
+            }
         }
     }
 }
