@@ -1,4 +1,7 @@
-﻿namespace GestaoDeEquipamentos.ConsoleApp.Compartilhado;
+﻿
+using GestaoDeEquipamentos.Dominio.Compartilhado;
+
+namespace GestaoDeEquipamentos.Infraestrutura.Compartilhado;
 
 public abstract class RepositorioBase<Tipo> where Tipo : EntidadeBase<Tipo>
 {
@@ -16,7 +19,7 @@ public abstract class RepositorioBase<Tipo> where Tipo : EntidadeBase<Tipo>
     {
         Tipo registroSelecionado = SelecionarRegistroPorId(idSelecionado);
 
-        if (registroSelecionado == null)
+        if (registroSelecionado is null)
             return false;
 
         registroSelecionado.AtualizarRegistro(registroAtualizado);
@@ -28,16 +31,10 @@ public abstract class RepositorioBase<Tipo> where Tipo : EntidadeBase<Tipo>
     {
         Tipo registroSelecionado = SelecionarRegistroPorId(idSelecionado);
 
-
-
-
         if (registroSelecionado is null)
             return false;
 
-
         registros.Remove(registroSelecionado);
-
-
 
         return true;
     }
@@ -51,12 +48,7 @@ public abstract class RepositorioBase<Tipo> where Tipo : EntidadeBase<Tipo>
     {
         foreach (Tipo registro in registros)
         {
-            if (registro.Id == idSelecionado)
-
-
-
-
-
+            if (registro.Id.Equals(idSelecionado))
                 return registro;
         }
 
