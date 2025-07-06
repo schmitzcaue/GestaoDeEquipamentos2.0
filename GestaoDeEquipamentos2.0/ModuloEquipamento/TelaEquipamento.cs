@@ -2,6 +2,8 @@
 using GestaoDeEquipamentos.ConsoleApp.ModuloFabricante;
 using GestaoDeEquipamentos.Dominio.ModuloEquipamento;
 using GestaoDeEquipamentos.Dominio.ModuloFabricante;
+using GestaoDeEquipamentos.Infraestrutura.Arquivos.ModuloChamado;
+using GestaoDeEquipamentos.Infraestrutura.Arquivos.ModuloFabricante;
 using GestaoDeEquipamentos.Infraestrutura.ModuloEquipamento;
 using GestaoDeEquipamentos.Infraestrutura.ModuloFabricante;
 
@@ -9,12 +11,12 @@ namespace GestaoDeEquipamentos.ConsoleApp.ModuloEquipamento;
 
 public class TelaEquipamento : TelaBase<Equipamento>, ITela
 {
-    private RepositorioEquipamento repositorioEquipamento;
-    private RepositorioFabricante repositorioFabricante;
+    private RepositorioEquipamentoEmArquivo repositorioEquipamento;
+    private RepositorioFabricanteEmArquivo repositorioFabricante;
 
     public TelaEquipamento(
-        RepositorioEquipamento repositorioEquipamento,
-        RepositorioFabricante repositorioFabricante
+        RepositorioEquipamentoEmArquivo repositorioEquipamento,
+        RepositorioFabricanteEmArquivo repositorioFabricante
     ) : base("Equipamento", repositorioEquipamento)
     {
         this.repositorioEquipamento = repositorioEquipamento;

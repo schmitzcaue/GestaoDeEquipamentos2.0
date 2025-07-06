@@ -1,8 +1,4 @@
 ﻿using GestaoDeEquipamentos.ConsoleApp.Compartilhado;
-
-
-
-
 namespace GestaoDeEquipamentos.ConsoleApp;
 
 class Program
