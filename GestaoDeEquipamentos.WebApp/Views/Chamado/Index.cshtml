@@ -1,0 +1,16 @@
+﻿@using GestaoDeEquipamentos.Dominio.ModuloChamado
+
+@model List<Chamado>
+
+<h1>Visualização de Chamados</h1>
+
+<hr />
+
+<a href="/Chamado/Cadastrar">Cadastrar Novo Chamados</a>
+
+<ul>
+	@foreach (Chamado c in Model)
+	{
+		<li>@c.Nome / @c.Email / @c.Telefone</li>
+	}
+</ul>
