@@ -1,0 +1,18 @@
+﻿@using GestaoDeEquipamentos.Dominio.ModuloEquipamento
+
+@model Equipamento;
+
+<h1>Exclusão de Equipamento</h1>
+
+<hr />
+
+<a href="/v/Index">Visualizar Equipamentos</a>
+
+<hr />
+
+<form action="/Equipamento/ExcluirConfirmado/@Model.Id" method="post">
+	<p>Deseja realmente excluir o registro "@Model.Nome"?</p>
+
+	<a href="/Equipamento">Voltar</a>
+	<button>Gravar</button>
+</form>

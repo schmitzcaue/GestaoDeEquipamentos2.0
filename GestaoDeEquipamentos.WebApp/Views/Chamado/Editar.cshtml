@@ -1,0 +1,33 @@
+﻿@using GestaoDeEquipamentos.Dominio.ModuloChamado
+
+@model Chamado;
+
+<h1>Edição de Chamado</h1>
+
+<hr />
+
+<a href="/Chamado/Index">Visualizar Chamados</a>
+
+<hr />
+
+<form action="/Fabricante/Editar/@Model.Id" method="post">
+	<label>Nome:</label>
+	<br />
+
+	<input name="Nome" value="@Model.Nome" />
+	<br />
+
+	<label>Email:</label>
+	<br />
+
+	<input name="Email" value="@Model.Email" />
+	<br />
+
+	<label>Telefone:</label>
+	<br />
+
+	<input name="Telefone" value="@Model.Telefone" />
+	<br />
+
+	<button>Gravar</button>
+</form>

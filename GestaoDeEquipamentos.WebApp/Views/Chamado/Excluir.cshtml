@@ -1,0 +1,18 @@
+﻿@using GestaoDeEquipamentos.Dominio.ModuloChamado
+
+@model Chamado;
+
+<h1>Exclusão de Chamado</h1>
+
+<hr />
+
+<a href="/Chamado/Index">Visualizar Chamados</a>
+
+<hr />
+
+<form action="/Chamado/ExcluirConfirmado/@Model.Id" method="post">
+	<p>Deseja realmente excluir o registro "@Model.Nome"?</p>
+
+	<a href="/Chamado">Voltar</a>
+	<button>Gravar</button>
+</form>

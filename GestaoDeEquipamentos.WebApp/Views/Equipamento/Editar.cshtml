@@ -1,0 +1,38 @@
+﻿@using GestaoDeEquipamentos.Dominio.ModuloEquipamento
+
+@model Equipamento;
+
+<h1>Edição de Equipamento</h1>
+
+<hr />
+
+<a href="/Equipamento/Index">Visualizar Equipamentos</a>
+
+<hr />
+
+<form action="/Equipamento/Editar/@Model.Id" method="post">
+	<label>Nome:</label>
+	<br />
+
+	<input name="Nome" value="@Model.Nome" />
+	<br />
+
+	<label>PrecoAquisicao :</label>
+	<br />
+
+	<input name="PrecoAquisicao " value="@Model.PrecoAquisicao " />
+	<br />
+
+	<label>NumeroSerie :</label>
+	<br />
+
+	<input name="NumeroSerie " value="@Model.NumeroSerie " />
+	<br />
+	<label>NumeroSerie :</label>
+	<br />
+
+	<input name="NumeroSerie " value="@Model.NumeroSerie " />
+	<br />
+
+	<button>Gravar</button>
+</form>
