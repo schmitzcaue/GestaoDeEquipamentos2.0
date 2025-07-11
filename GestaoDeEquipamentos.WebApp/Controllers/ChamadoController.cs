@@ -1,40 +1,43 @@
-﻿//using GestaoDeEquipamentos.Dominio.ModuloFabricante;
-//using GestaoDeEquipamentos.Infraestrutura.Arquivos.Compartilhado;
-//using GestaoDeEquipamentos.Infraestrutura.Arquivos.ModuloFabricante;
-//using Microsoft.AspNetCore.Mvc;
+﻿using GestaoDeEquipamentos.Dominio.ModuloChamado;
+using GestaoDeEquipamentos.Dominio.ModuloEquipamento;
+using GestaoDeEquipamentos.Dominio.ModuloFabricante;
+using GestaoDeEquipamentos.Infraestrutura.Arquivos.Compartilhado;
+using GestaoDeEquipamentos.Infraestrutura.Arquivos.ModuloChamado;
+using Microsoft.AspNetCore.Mvc;
 
-//namespace GestaoDeEquipamentos.WebApp.Controllers;
+namespace GestaoDeEquipamentos.WebApp.Controllers;
 
-//public class FabricanteController : Controller
-//{
-//    private RepositorioFabricanteEmArquivo repositorioFabricante;
 
-//    public FabricanteController()
-//    {
-//        ContextoDados contexto = new ContextoDados(true);
-//        repositorioFabricante = new RepositorioFabricanteEmArquivo(contexto);
-//    }
+public class ChamadoController : Controller
+{
+    private RepositorioChamadoEmArquivo repositorioChamado;
 
-//    public IActionResult Index()
-//    {
-//        List<Fabricante> fabricantes = repositorioFabricante.SelecionarRegistros();
+    public ChamadoController()
+    {
+        ContextoDados contexto = new ContextoDados(true);
+        repositorioChamado = new RepositorioChamadoEmArquivo(contexto);
+    }
 
-//        return View(fabricantes);
-//    }
+    public IActionResult Index()
+    {
+        List<Chamado> chamados = repositorioChamado.SelecionarRegistros();
 
-//    [HttpGet]
-//    public IActionResult Cadastrar()
-//    {
-//        return View();
-//    }
+        return View(chamados);
+    }
 
-//    [HttpPost]
-//    public IActionResult Cadastrar(string nome, string email, string telefone)
-//    {
-//        Fabricante novoFabricante = new Fabricante(nome, email, telefone);
+    [HttpGet]
+    public IActionResult Cadastrar()
+    {
+        return View();
+    }
 
-//        repositorioFabricante.CadastrarRegistro(novoFabricante);
+    [HttpPost]
+    public IActionResult Cadastrar(string Titulo, string Descricao, DateTime DataAbertura, Equipamento Equipamento)
+    {
+        Chamado novoChamado = new Chamado(Titulo, Descricao, DataAbertura, Equipamento);
 
-//        return RedirectToAction("Index");
-//    }
-//}
+        repositorioChamado.CadastrarRegistro(novoChamado);
+
+        return RedirectToAction("Index");
+    }
+}
