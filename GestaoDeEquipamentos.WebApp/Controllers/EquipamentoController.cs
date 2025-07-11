@@ -1,41 +1,86 @@
-﻿using GestaoDeEquipamentos.Dominio.ModuloEquipamento;
-using GestaoDeEquipamentos.Infraestrutura.Arquivos.Compartilhado;
-using GestaoDeEquipamentos.Infraestrutura.Arquivos.ModuloChamado;
-//using GestaoDeEquipamentos.Infraestrutura.Arquivos.ModuloEquipamento;
-using Microsoft.AspNetCore.Mvc;
+﻿//using GestaoDeEquipamentos.Dominio.ModuloEquipamento;
+//using GestaoDeEquipamentos.Infraestrutura.Arquivos.Compartilhado;
+//using GestaoDeEquipamentos.Infraestrutura.Arquivos.ModuloChamado;
+////using GestaoDeEquipamentos.Infraestrutura.Arquivos.ModuloEquipamento;
+//using Microsoft.AspNetCore.Mvc;
 
-namespace GestaoDeEquipamentos.WebApp.Controllers;
+//namespace GestaoDeEquipamentos.WebApp.Controllers;
 
-public class EquipamentoController : Controller
-{
-    private RepositorioEquipamentoEmArquivo repositorioEquipamento;
+//public class EquipamentoController : Controller
+//{
+//    private RepositorioEquipamentoEmArquivo repositorioEquipamento;
 
-    public EquipamentoController()
-    {
-        ContextoDados contexto = new ContextoDados(true);
-        repositorioEquipamento = new RepositorioEquipamentoEmArquivo(contexto);
-    }
+//    public EquipamentoController()
+//    {
+//        ContextoDados contexto = new ContextoDados(true);
+//        repositorioEquipamento = new RepositorioEquipamentoEmArquivo(contexto);
+//    }
 
-    public IActionResult Index()
-    {
-        List<Equipamento> equipamentos = repositorioEquipamento.SelecionarRegistros();
+//    public IActionResult Index()
+//    {
+//        List<Equipamento> fabricantes = repositorioEquipamento.SelecionarRegistros();
 
-        return View(equipamentos);
-    }
+//        return View(fabricantes);
+//    }
 
-    [HttpGet]
-    public IActionResult Cadastrar()
-    {
-        return View();
-    }
 
-    [HttpPost]
-    public IActionResult Cadastrar(string nome, string email, string telefone)
-    {
-        Equipamento novoEquipamento = new Equipamento(nome, email, telefone);
+//    public IActionResult Cadastrar()
+//    {
+//        return View();
+//    }
 
-        repositorioEquipamento.CadastrarRegistro(novoEquipamento);
+//    [HttpPost]
+//    public IActionResult Cadastrar(string nome, decimal PrecoAquisicao, string NumeroSerie)
+//    {
+//        Equipamento novoEquipamento = new Equipamento(nome, PrecoAquisicao, NumeroSerie);
 
-        return RedirectToAction("Index");
-    }
-}
+//        repositorioEquipamento.CadastrarRegistro(novoEquipamento);
+
+//        return RedirectToAction(nameof(Index));
+//    }
+
+//    public IActionResult Editar(int id)
+//    {
+//        Equipamento equipamentoSelecionado = repositorioEquipamento.SelecionarRegistroPorId(id);
+
+//        if (equipamentoSelecionado == null)
+//            return RedirectToAction(nameof(Index));
+
+//        return View(equipamentoSelecionado);
+//    }
+
+//    [HttpPost]
+//    public IActionResult Editar(int id, string nome, decimal PrecoAquisicao, string NumeroSerie)
+//    {
+//        Equipamento equipamentoEditado = new Equipamento(nome, PrecoAquisicao, NumeroSerie);
+
+//        bool edicaoConluida = repositorioEquipamento.EditarRegistro(id, equipamentoEditado);
+
+//        if (!edicaoConluida)
+//        {
+//            equipamentoEditado.Id = id;
+
+//            return View(equipamentoEditado);
+//        }
+
+//        return RedirectToAction(nameof(Index));
+//    }
+
+//    public IActionResult Excluir(int id)
+//    {
+//        Equipamento equipamentoSelecionado = repositorioEquipamento.SelecionarRegistroPorId(id);
+
+//        if (equipamentoSelecionado == null)
+//            return RedirectToAction(nameof(Index));
+
+//        return View(equipamentoSelecionado);
+//    }
+
+//    [HttpPost]
+//    public IActionResult ExcluirConfirmado(int id)
+//    {
+//        repositorioEquipamento.ExcluirRegistro(id);
+
+//        return RedirectToAction(nameof(Index));
+//    }
+//}
