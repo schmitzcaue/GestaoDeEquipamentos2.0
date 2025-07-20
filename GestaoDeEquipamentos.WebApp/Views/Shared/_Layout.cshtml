@@ -7,7 +7,7 @@
     @* Bootstrap Icons *@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
-    <title>Cadastro de Chamados | Gestão de Equipamentos</title>
+    <title>Título da Página | Gestão de Equipamentos</title>
 </head>
 <body data-bs-theme="dark">
     @* Barra de Navegação / Navbar *@
@@ -35,44 +35,14 @@
 
     @* Cabeçalho com o Título da Página Atual *@
     <header class="container my-4">
-        <h1>Cadastro de Chamados</h1>
+        <h1>Título da Página</h1>
     </header>
 
     <hr />
 
-
-
     @* Conteúdo Principal da Página *@
     <main class="container my-4">
-        <div class="row justify-content-center">
-            <form class="col-6" action="/Fabricante/Cadastrar" method="post">
-                <div class="mb-3">
-                    <label for="Titulo" class="form-label">Titulo</label>
-                    <input class="form-control" name="Titulo">
-                </div>
-
-                <div class="mb-3">
-                    <label for="Descricao" class="form-label">Descricao</label>
-                    <input class="form-control" name="Descricao">
-                </div>
-
-                <div class="mb-5">
-                    <label for="DataAbertura" class="form-label">DataAbertura</label>
-                    <input class="form-control" name="DataAbertura">
-                </div>
-                
-                <div class="mb-5">
-                    <label for="Equipamento" class="form-label">Equipamento</label>
-                    <input class="form-control" name="Equipamento">
-                </div>
-
-                <div class="d-flex gap-2 justify-content-end">
-                    <a href="/Fabricante" class="btn btn-outline-primary px-5 ">Voltar</a>
-                    <button class="btn btn-primary px-5">Gravar</button>
-                </div>
-            </form>
-        </div>
+        @RenderBody()
     </main>
 </body>
 </html>
-</form>
