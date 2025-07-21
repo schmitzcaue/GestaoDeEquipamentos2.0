@@ -2,7 +2,8 @@
 using GestaoDeEquipamentos.Dominio.ModuloFabricante;
 using GestaoDeEquipamentos.Infraestrutura.Arquivos.Compartilhado;
 using GestaoDeEquipamentos.Infraestrutura.Arquivos.ModuloChamado;
-//using GestaoDeEquipamentos.Infraestrutura.Arquivos.ModuloEquipamento;
+using GestaoDeEquipamentos.Infraestrutura.Arquivos.ModuloFabricante;
+using GestaoDeEquipamentos.WebApp.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GestaoDeEquipamentos.WebApp.Controllers;
@@ -10,77 +11,50 @@ namespace GestaoDeEquipamentos.WebApp.Controllers;
 public class EquipamentoController : Controller
 {
     private RepositorioEquipamentoEmArquivo repositorioEquipamento;
+    private RepositorioFabricanteEmArquivo repositorioFabricante;
 
     public EquipamentoController()
     {
         ContextoDados contexto = new ContextoDados(true);
         repositorioEquipamento = new RepositorioEquipamentoEmArquivo(contexto);
+        repositorioFabricante = new RepositorioFabricanteEmArquivo(contexto);
     }
 
     public IActionResult Index()
     {
-        List<Equipamento> fabricantes = repositorioEquipamento.SelecionarRegistros();
+        List<Equipamento> equipamentos = repositorioEquipamento.SelecionarRegistros();
 
-        return View(fabricantes);
+        VisualizarEquipamentosViewModel visualizarVm = new VisualizarEquipamentosViewModel(equipamentos);
+
+        return View(visualizarVm);
     }
-
 
     public IActionResult Cadastrar()
     {
-        return View();
+        List<Fabricante> fabricantes = repositorioFabricante.SelecionarRegistros();
+
+        CadastrarEquipamentoViewModel cadastrarVm = new CadastrarEquipamentoViewModel(fabricantes);
+
+        return View(cadastrarVm);
     }
 
     [HttpPost]
-    public IActionResult Cadastrar(string nome, decimal PrecoAquisicao, string NumeroSerie, Fabricante Fabricante, DateTime DataFabricacao)
+    public IActionResult Cadastrar(CadastrarEquipamentoViewModel cadastrarVm)
     {
-        Equipamento novoEquipamento = new Equipamento(nome, PrecoAquisicao, NumeroSerie, Fabricante, DataFabricacao);
+        Fabricante fabricanteSelecionado = repositorioFabricante.SelecionarRegistroPorId(cadastrarVm.FabricanteId);
+
+        if (fabricanteSelecionado == null)
+            return RedirectToAction(nameof(Index));
+
+        Equipamento novoEquipamento = new Equipamento(
+            cadastrarVm.Nome,
+            cadastrarVm.PrecoAquisicao,
+            cadastrarVm.DataFabricacao,
+            fabricanteSelecionado
+
+        );
 
         repositorioEquipamento.CadastrarRegistro(novoEquipamento);
-
-        return RedirectToAction(nameof(Index));
-    }
-
-    public IActionResult Editar(int id)
-    {
-        Equipamento equipamentoSelecionado = repositorioEquipamento.SelecionarRegistroPorId(id);
-
-        if (equipamentoSelecionado == null)
-            return RedirectToAction(nameof(Index));
-
-        return View(equipamentoSelecionado);
-    }
-
-    [HttpPost]
-    public IActionResult Editar(int id, string nome, decimal PrecoAquisicao, string NumeroSerie, Fabricante Fabricante, DateTime DataFabricacao)
-    {
-        Equipamento equipamentoEditado = new Equipamento(nome, PrecoAquisicao, NumeroSerie, Fabricante, DataFabricacao);
-
-        bool edicaoConluida = repositorioEquipamento.EditarRegistro(id, equipamentoEditado);
-
-        if (!edicaoConluida)
-        {
-            equipamentoEditado.Id = id;
-
-            return View(equipamentoEditado);
-        }
-
-        return RedirectToAction(nameof(Index));
-    }
-
-    public IActionResult Excluir(int id)
-    {
-        Equipamento equipamentoSelecionado = repositorioEquipamento.SelecionarRegistroPorId(id);
-
-        if (equipamentoSelecionado == null)
-            return RedirectToAction(nameof(Index));
-
-        return View(equipamentoSelecionado);
-    }
-
-    [HttpPost]
-    public IActionResult ExcluirConfirmado(int id)
-    {
-        repositorioEquipamento.ExcluirRegistro(id);
 
         return RedirectToAction(nameof(Index));
     }
