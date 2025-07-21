@@ -1,17 +1,17 @@
 ﻿@using GestaoDeEquipamentos.Dominio.ModuloFabricante
-
+@using GestaoDeEquipamentos.WebApp.Models
 @{
     Layout = "_Layout";
     ViewBag.Titulo = "Visualização de Fabricantes";
 }
-@model List<Fabricante>
+@model VisualizarFabricantesViewModel
 <a class="btn btn-primary" href="/Fabricante/Cadastrar">
     <i class="bi bi-plus"></i>
     Cadastrar novo/a
 </a>
 
 <div class="row mt-4">
-    @foreach (Fabricante f in Model)
+    @foreach (DetalhesFabricanteViewModel f in Model.Registros)
     {
         <div class="col-3">
             <div class="card">
