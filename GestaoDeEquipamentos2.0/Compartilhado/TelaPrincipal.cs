@@ -1,12 +1,7 @@
 ﻿using GestaoDeEquipamentos.ConsoleApp.ModuloChamado;
 using GestaoDeEquipamentos.ConsoleApp.ModuloEquipamento;
-using GestaoDeEquipamentos.ConsoleApp.ModuloFabricante;
 using GestaoDeEquipamentos.Infraestrutura.Arquivos.Compartilhado;
-using GestaoDeEquipamentos.Infraestrutura.Arquivos.ModuloChamado;
 using GestaoDeEquipamentos.Infraestrutura.Arquivos.ModuloFabricante;
-using GestaoDeEquipamentos.Infraestrutura.ModuloChamado;
-using GestaoDeEquipamentos.Infraestrutura.ModuloEquipamento;
-using GestaoDeEquipamentos.Infraestrutura.ModuloFabricante;
 
 namespace GestaoDeEquipamentos.ConsoleApp.Compartilhado;
 
@@ -27,6 +22,7 @@ public class TelaPrincipal
     public TelaPrincipal()
     {
         contextoDados = new ContextoDados(true);
+
         repositorioFabricante = new RepositorioFabricanteEmArquivo(contextoDados);
         repositorioEquipamento = new RepositorioEquipamentoEmArquivo(contextoDados);
         repositorioChamado = new RepositorioChamadoEmArquivo(contextoDados);

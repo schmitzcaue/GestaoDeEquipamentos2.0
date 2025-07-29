@@ -1,9 +1,8 @@
 ﻿using GestaoDeEquipamentos.Dominio.ModuloChamado;
-using GestaoDeEquipamentos.Dominio.ModuloFabricante;
 using GestaoDeEquipamentos.Infraestrutura.Arquivos.Compartilhado;
 using GestaoDeEquipamentos.Infraestrutura.Compartilhado;
 
-namespace GestaoDeEquipamentos.Infraestrutura.Arquivos.ModuloChamado;
+namespace GestaoDeEquipamentos.Infraestrutura.Arquivos.ModuloFabricante;
 
 public class RepositorioChamadoEmArquivo : RepositorioBaseEmArquivo<Chamado>
 {

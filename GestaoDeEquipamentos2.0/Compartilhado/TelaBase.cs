@@ -4,8 +4,6 @@ using GestaoDeEquipamentos.Infraestrutura.Compartilhado;
 namespace GestaoDeEquipamentos.ConsoleApp.Compartilhado;
 
 public abstract class TelaBase<T> where T : EntidadeBase<T>
-
-
 {
     protected string nomeEntidade;
     private RepositorioBaseEmArquivo<T> repositorio;
@@ -65,13 +63,13 @@ public abstract class TelaBase<T> where T : EntidadeBase<T>
             ApresentarMensagem(erros, ConsoleColor.Red);
 
             CadastrarRegistro();
+
             return;
         }
 
         repositorio.CadastrarRegistro(novoRegistro);
 
         ApresentarMensagem("O registro foi concluído com sucesso!", ConsoleColor.Green);
-
     }
 
     public virtual void EditarRegistro()
@@ -152,7 +150,6 @@ public abstract class TelaBase<T> where T : EntidadeBase<T>
         Console.ForegroundColor = cor;
 
         Console.WriteLine();
-
 
         Console.WriteLine(mensagem);
 

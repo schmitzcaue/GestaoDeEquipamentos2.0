@@ -9,14 +9,15 @@ public class Chamado : EntidadeBase<Chamado>
     public string Descricao { get; set; }
     public DateTime DataAbertura { get; set; }
     public Equipamento Equipamento { get; set; }
+
     public Chamado() { }
-   
+
     public Chamado(
         string titulo,
         string descricao,
         DateTime dataAbertura,
         Equipamento equipamento
-    ): this()
+    ) : this()
     {
         Titulo = titulo;
         Descricao = descricao;

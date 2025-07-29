@@ -1,10 +1,10 @@
 ﻿
 using GestaoDeEquipamentos.ConsoleApp.Compartilhado;
 using GestaoDeEquipamentos.Dominio.ModuloFabricante;
-using GestaoDeEquipamentos.Infraestrutura.Arquivos.ModuloFabricante;
-using GestaoDeEquipamentos.Infraestrutura.ModuloFabricante;
+using GestaoDeEquipamentos.Infraestrutura.Arquivos.Compartilhado;
+using GestaoDeEquipamentos.Infraestrutura.Compartilhado;
 
-namespace GestaoDeEquipamentos.ConsoleApp.ModuloFabricante;
+namespace GestaoDeEquipamentos.Infraestrutura.Arquivos.ModuloFabricante;
 
 public class TelaFabricante : TelaBase<Fabricante>, ITela
 {
