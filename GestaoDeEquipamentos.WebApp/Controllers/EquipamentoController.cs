@@ -1,7 +1,7 @@
 ﻿using GestaoDeEquipamentos.Dominio.ModuloEquipamento;
 using GestaoDeEquipamentos.Dominio.ModuloFabricante;
 using GestaoDeEquipamentos.Infraestrutura.Arquivos.Compartilhado;
-using GestaoDeEquipamentos.Infraestrutura.Arquivos.ModuloChamado;
+//using GestaoDeEquipamentos.Infraestrutura.Arquivos.ModuloChamado;
 using GestaoDeEquipamentos.Infraestrutura.Arquivos.ModuloFabricante;
 using GestaoDeEquipamentos.WebApp.Models;
 using Microsoft.AspNetCore.Mvc;

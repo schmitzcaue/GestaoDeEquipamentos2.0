@@ -1,5 +1,6 @@
 ﻿using GestaoDeEquipamentos.ConsoleApp.ModuloChamado;
 using GestaoDeEquipamentos.ConsoleApp.ModuloEquipamento;
+using GestaoDeEquipamentos.ConsoleApp.ModuloFabricante;
 using GestaoDeEquipamentos.Infraestrutura.Arquivos.Compartilhado;
 using GestaoDeEquipamentos.Infraestrutura.Arquivos.ModuloFabricante;
 
